@@ -35,29 +35,30 @@ package home.task;
 // If you have any questions - contact me via email andrei_matys@atlantconsult.com
 
 
+import java.util.Random;
+
 public class ElevatorSyncRunner {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         // Create digit panel for elevator
-        DigitPanel digitPanel = new DigitPanel(25);
+        DigitPanel digitPanel = DigitPanel.getInstance();
+        digitPanel.setFloors(25);
 
         // Create new elevator
         ElevatorSync elevator = new ElevatorSync(25, digitPanel); // 25 floors
 
-        // Good, new housemates at first floor
-        digitPanel.selectFloor(9);
-        digitPanel.selectFloor(2);
-        digitPanel.selectFloor(4);
-        digitPanel.selectFloor(6);
-        digitPanel.selectFloor(9);
-        digitPanel.selectFloor(23);
-        digitPanel.selectFloor(3);
-        digitPanel.selectFloor(10);
-        digitPanel.selectFloor(18);
+
+        Random random = new Random();
+        int max = 5000;
+        int min = 3000;
+        for (int i = 1; i <= 25; i++) {
+            Floor floor = new Floor(i, digitPanel, random.nextBoolean(), random.nextInt(max - min) + min);
+            floor.start();
+        }
 
         // Ok, all guys are inside, let's go
-        elevator.run();
+        elevator.start();
 
     }
 

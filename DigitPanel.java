@@ -5,12 +5,23 @@ import java.util.List;
 
 public class DigitPanel {
 
+    private static DigitPanel instance = null;
     private int floors;
     private List<Integer> selectedFloors;
 
-    public DigitPanel(int floors) {
-        this.floors = floors;
+    private DigitPanel(){
         this.selectedFloors = new ArrayList<>();
+    }
+
+    public static DigitPanel getInstance(){
+        if(instance ==null){
+            instance = new DigitPanel();
+        }
+        return instance;
+    }
+
+    public void setFloors(int floors) {
+        this.floors = floors;
     }
 
     public void removeFloor(int floor) {

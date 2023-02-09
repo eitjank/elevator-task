@@ -2,7 +2,7 @@ package home.task;
 
 import java.util.*;
 
-public class ElevatorSync {
+public class ElevatorSync extends Thread {
 
     private final DigitPanel digitPanel; // Sequence of selected floors
     private final int floors; // Tech value
@@ -98,11 +98,12 @@ public class ElevatorSync {
         }
     }
 
-
+    @Override
     public void run() {
 
         // Start elevator
         while (true) {
+            waiting();
             // Calculate new sequence
             calcFloorSequence();
             // And go!

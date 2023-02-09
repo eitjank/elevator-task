@@ -13,7 +13,8 @@ public class ElevatorTest {
 
     @Test
     public void shouldElevatorGoUpToSelectedFloor(){
-        DigitPanel digitPanel = new DigitPanel(25);
+        DigitPanel digitPanel = DigitPanel.getInstance();
+        digitPanel.setFloors(25);
         ElevatorSync elevator = new ElevatorSync(25, digitPanel);
 
         digitPanel.selectFloor(12);
@@ -28,7 +29,8 @@ public class ElevatorTest {
 
     @Test
     public void shouldElevatorGoDownToSelectedFloor(){
-        DigitPanel digitPanel = new DigitPanel(25);
+        DigitPanel digitPanel = DigitPanel.getInstance();
+        digitPanel.setFloors(25);
         ElevatorSync elevator = new ElevatorSync(25, digitPanel);
 
         digitPanel.selectFloor(19);
@@ -51,7 +53,8 @@ public class ElevatorTest {
 
     @Test
     public void shouldFloorsBeStoredInPanelIfItDoesNotSuiteDirection() {
-        DigitPanel digitPanel = new DigitPanel(25);
+        DigitPanel digitPanel = DigitPanel.getInstance();
+        digitPanel.setFloors(25);
         ElevatorSync elevator = new ElevatorSync(25, digitPanel);
 
         digitPanel.selectFloor(4);
@@ -75,7 +78,8 @@ public class ElevatorTest {
 
     @Test
     public void shouldElevatorNotHaveDuplicateFloorSequence(){
-        DigitPanel digitPanel = new DigitPanel(25);
+        DigitPanel digitPanel = DigitPanel.getInstance();
+        digitPanel.setFloors(25);
 
         ElevatorSync elevator = new ElevatorSync(25, digitPanel);
 
